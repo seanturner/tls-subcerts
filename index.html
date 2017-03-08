@@ -296,7 +296,7 @@ address {
 
   <meta name="dct.creator" content="Barnes, R., Iyengar, S., Sullivan, N., and E. Rescorla" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-rescorla-tls-subcerts-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2017-3-07" />
+  <meta name="dct.issued" scheme="ISO8601" content="2017-3-08" />
   <meta name="dct.abstract" content="The organizational separation between the operator of a TLS server and the certificate authority that provides it credentials can cause problems, for example when it comes to reducing the lifetime of certificates or supporting new cryptographic algorithms.  This document describes a mechanism to allow TLS server operators to create their own credential delegations without breaking compatibility with clients that do not support this specification." />
   <meta name="description" content="The organizational separation between the operator of a TLS server and the certificate authority that provides it credentials can cause problems, for example when it comes to reducing the lifetime of certificates or supporting new cryptographic algorithms.  This document describes a mechanism to allow TLS server operators to create their own credential delegations without breaking compatibility with clients that do not support this specification." />
 
@@ -320,7 +320,7 @@ address {
   <td class="right">S. Iyengar</td>
 </tr>
 <tr>
-  <td class="left">Expires: September 8, 2017</td>
+  <td class="left">Expires: September 9, 2017</td>
   <td class="right">Facebook</td>
 </tr>
 <tr>
@@ -341,7 +341,7 @@ address {
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">March 07, 2017</td>
+  <td class="right">March 08, 2017</td>
 </tr>
 
     	
@@ -361,7 +361,7 @@ address {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on September 8, 2017.</p>
+<p>This Internet-Draft will expire on September 9, 2017.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -493,7 +493,7 @@ struct {
 <ul>
   <li>A string that consists of octet 32 (0x20) repeated 64 times.</li>
   <li>The context string &#8220;TLS, server delegated credentials&#8221;.</li>
-  <li>Big endian serialized 2 bytes ProtocolVersion of the TLS version defined by TLS.</li>
+  <li>Big endian serialized 2 bytes ProtocolVersion of the negotiated TLS version, defined by TLS.</li>
   <li>DER encoded X.509 certificate used to sign the DelegatedCredential.</li>
   <li>Big endian serialized 2 byte SignatureScheme scheme.</li>
   <li>The DelegatedCredentialParams structure.</li>
@@ -506,13 +506,13 @@ struct {
   <li>It is bound to the protocol version that is negotiated.  This is intended to avoid cross-protocol attacks with signing oracles.</li>
 </ul>
 <p id="rfc.section.5.p.11">The code changes to create and verify Delegated credentials would be localized to the TLS stack, which has the advantage of avoiding changes to security-critical and often delicate PKI code (though of course moves that complexity to the TLS stack).</p>
-<p id="rfc.section.5.p.12">Delegated credentials present a better alternative from other delegation mechanisms like proxy certificates for several reasons:</p>
+<p id="rfc.section.5.p.12">Delegated credentials present a better alternative from other delegation mechanisms like proxy certificates <a href="#RFC3820">[RFC3820]</a> for several reasons:</p>
 <p/>
 
 <ul>
   <li>There is no change needed to certificate validation at the PKI layer.</li>
   <li>X.509 semantics are very rich.  This can cause unintended consequences if a service owner creates a proxy cert where the properties differ from the leaf certificate.  Delegated credentials have very restricted semantics which should not conflict with X.509 semantics.</li>
-  <li>Proxy certificates rely on the cert path building process to establish a binding between the proxy certificate and the server certificate.  Since the cert path building process is not cryptographically protected, it is possible that a proxy certificate could be bound to another certificate with the same public key, with different X.509 parameters.  Delegated credentials, which rely on a cryptographic binding between the entire certificate and the Delegated credential, cannot.</li>
+  <li>Proxy certificates rely on the certificate path building process to establish a binding between the proxy certificate and the server certificate.  Since the cert path building process is not cryptographically protected, it is possible that a proxy certificate could be bound to another certificate with the same public key, with different X.509 parameters.  Delegated credentials, which rely on a cryptographic binding between the entire certificate and the Delegated credential, cannot.</li>
   <li>Delegated credentials allow signed messages to be bound to specific versions of TLS.  This prevents them from being used for other protocols if a service owner allows multiple versions of TLS.</li>
 </ul>
 <h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#certificate-requirements" id="certificate-requirements">Certificate Requirements</a></h1>
@@ -560,6 +560,12 @@ struct {
         <b id="I-D.mglt-lurk-tls-requirements">[I-D.mglt-lurk-tls-requirements]</b>
       </td>
       <td class="top"><a>Migault, D.</a> and <a>K. Ma</a>, "<a href="http://tools.ietf.org/html/draft-mglt-lurk-tls-requirements-00">Authentication Model and Security Requirements for the TLS/DTLS Content Provider Edge Server Split Use Case</a>", Internet-Draft draft-mglt-lurk-tls-requirements-00, January 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC3820">[RFC3820]</b>
+      </td>
+      <td class="top"><a>Tuecke, S.</a>, <a>Welch, V.</a>, <a>Engert, D.</a>, <a>Pearlman, L.</a> and <a>M. Thompson</a>, "<a href="http://tools.ietf.org/html/rfc3820">Internet X.509 Public Key Infrastructure (PKI) Proxy Certificate Profile</a>", RFC 3820, DOI 10.17487/RFC3820, June 2004.</td>
     </tr>
     <tr>
       <td class="reference">
