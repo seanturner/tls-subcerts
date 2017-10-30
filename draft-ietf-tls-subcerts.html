@@ -299,7 +299,7 @@ address {
 
   <meta name="dct.creator" content="Barnes, R., Iyengar, S., Sullivan, N., and E. Rescorla" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-rescorla-tls-subcerts-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2017-10-28" />
+  <meta name="dct.issued" scheme="ISO8601" content="2017-10-30" />
   <meta name="dct.abstract" content="The organizational separation between the operator of a TLS server and the certificate authority that provides it credentials can cause problems, for example when it comes to reducing the lifetime of certificates or supporting new cryptographic algorithms.  This document describes a mechanism to allow TLS server operators to create their own credential delegations without breaking compatibility with clients that do not support this specification." />
   <meta name="description" content="The organizational separation between the operator of a TLS server and the certificate authority that provides it credentials can cause problems, for example when it comes to reducing the lifetime of certificates or supporting new cryptographic algorithms.  This document describes a mechanism to allow TLS server operators to create their own credential delegations without breaking compatibility with clients that do not support this specification." />
 
@@ -323,7 +323,7 @@ address {
 <td class="right">S. Iyengar</td>
 </tr>
 <tr>
-<td class="left">Expires: May 1, 2018</td>
+<td class="left">Expires: May 3, 2018</td>
 <td class="right">Facebook</td>
 </tr>
 <tr>
@@ -344,7 +344,7 @@ address {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">October 28, 2017</td>
+<td class="right">October 30, 2017</td>
 </tr>
 
     	
@@ -360,7 +360,7 @@ address {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on May 1, 2018.</p>
+<p>This Internet-Draft will expire on May 3, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2017 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -418,7 +418,7 @@ address {
 <li>Whenever the server operator wants to deploy a new certificate, it has to interact with the CA.</li>
 <li>The server operator can only use TLS authentication schemes for which the CA will issue credentials.</li>
 </ul>
-<p id="rfc.section.1.p.3">These dependencies cause problems in practice.  Server operators often want to create short-lived certificates for servers in low-trust zones such as CDNs or remote data centers.  This allows server opertors to limit the exposure of keys in cases that they do not realize a compromise has occurred.  The risk inherent in cross-organizational transactions makes it operationally infeasible to rely on an external CA for such short-lived credentials.  In contast to OCSP stapling, in which an operator could choose to talk to the CA frequently to obtain stapled responses, the risk is lower, because failure to fetch an OCSP stapled response results only in degraded performance, however failure to fetch a potentially large number of short lived certificates would result in the service not being available which creates greater operational risk.</p>
+<p id="rfc.section.1.p.3">These dependencies cause problems in practice.  Server operators often want to create short-lived certificates for servers in low-trust zones such as CDNs or remote data centers.  This allows server operators to limit the exposure of keys in cases that they do not realize a compromise has occurred.  The risk inherent in cross-organizational transactions makes it operationally infeasible to rely on an external CA for such short-lived credentials.  In contrast to OCSP stapling, in which an operator could choose to talk to the CA frequently to obtain stapled responses, failure to fetch an OCSP stapled response results only in degraded performance, however failure to fetch a potentially large number of short lived certificates would result in the service not being available which creates greater operational risk.</p>
 <p id="rfc.section.1.p.4">To remove these dependencies, this document proposes a limited delegation mechanism that allows a TLS server operator to issue its own credentials within the scope of a certificate issued by an external CA.  Because the above problems do not relate to the CAs inherent function of validating possession of names, it is safe to make such delegations as long as they only enable the recipient of the delegation to speak for names that the CA has authorized.  For clarity, we will refer to the certificate issued by the CA as a &#8220;certificate&#8221; and the one issued by the operator as a &#8220;Delegated credential&#8221;.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#solution-overview" id="solution-overview">Solution Overview</a>
@@ -440,7 +440,7 @@ address {
 <li>The client uses information in the server&#8217;s certificate to verify the signature on the credential and verify that the server is asserting an expected identity.</li>
 <li>The client uses the public key in the credential as the server&#8217;s working key for the TLS handshake.</li>
 </ul>
-<p id="rfc.section.2.p.6">Delegated credentials can be used either in TLS 1.3 or TLS 1.2.  Differences between the use of Delegated credentials in the protocols are explictly stated.</p>
+<p id="rfc.section.2.p.6">Delegated credentials can be used either in TLS 1.3 or TLS 1.2.  Differences between the use of Delegated credentials in the protocols are explicitly stated.</p>
 <p id="rfc.section.2.p.7">It was noted in <a href="#XPROT" class="xref">[XPROT]</a> that certificates in use by servers that support outdated protocols such as SSLv2 can be used to forge signatures for certificates that contain the keyEncipherment KeyUsage (<a href="#RFC5280" class="xref">[RFC5280]</a> section 4.2.1.3) In order to prevent this type of cross-protocol attack, we define a new DelegationUsage extension to X.509 which permits use of delegated credentials.  Clients MUST NOT accept delegated credentials associated with certificates without this extension.</p>
 <p id="rfc.section.2.p.8">Credentials allow the server to terminate TLS connections on behalf of the certificate owner.  If a credential is stolen, there is no mechanism for revoking it without revoking the certificate itself.  To limit the exposure of a delegation credential compromise, servers MUST NOT issue credentials with a validity period longer than 7 days.  Clients MUST NOT accept credentials with longer validity periods.</p>
 <h1 id="rfc.section.2.1">
@@ -567,13 +567,14 @@ struct {
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
+<p id="rfc.section.5.p.1">TBD</p>
 <h1 id="rfc.section.6">
 <a href="#rfc.section.6">6.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
 <h1 id="rfc.section.6.1">
 <a href="#rfc.section.6.1">6.1.</a> <a href="#security-of-delegated-private-key" id="security-of-delegated-private-key">Security of delegated private key</a>
 </h1>
-<p id="rfc.section.6.1.p.1">Delegated credentials limits the exposure of the TLS private key by limiting its validity.  An attacker who compromises the private key of a delegated credential can act as a man in the middle until the delegate credential expires, however they cannot create new delegated credentials. Thus delegated credentials should not be used to send a delegation to an untrusted party, but is meant to be used between parties that have some trust relationship with each other.  The secrecy of the delegated private key is thus important and several access control mechanisms SHOULD be used to protect it such as file system controls, physical security or hardware security modules.</p>
+<p id="rfc.section.6.1.p.1">Delegated credentials limit the exposure of the TLS private key by limiting its validity.  An attacker who compromises the private key of a delegated credential can act as a man in the middle until the delegate credential expires, however they cannot create new delegated credentials. Thus delegated credentials should not be used to send a delegation to an untrusted party, but is meant to be used between parties that have some trust relationship with each other.  The secrecy of the delegated private key is thus important and several access control mechanisms SHOULD be used to protect it such as file system controls, physical security or hardware security modules.</p>
 <h1 id="rfc.section.6.2">
 <a href="#rfc.section.6.2">6.2.</a> <a href="#revocation-of-delegated-credentials" id="revocation-of-delegated-credentials">Revocation of delegated credentials</a>
 </h1>
@@ -608,7 +609,7 @@ struct {
 <tr>
 <td class="reference"><b id="I-D.ietf-acme-acme">[I-D.ietf-acme-acme]</b></td>
 <td class="top">
-<a>Barnes, R.</a>, <a>Hoffman-Andrews, J.</a> and <a>J. Kasten</a>, "<a href="https://tools.ietf.org/html/draft-ietf-acme-acme-07">Automatic Certificate Management Environment (ACME)</a>", Internet-Draft draft-ietf-acme-acme-07, June 2017.</td>
+<a>Barnes, R.</a>, <a>Hoffman-Andrews, J.</a> and <a>J. Kasten</a>, "<a href="https://tools.ietf.org/html/draft-ietf-acme-acme-08">Automatic Certificate Management Environment (ACME)</a>", Internet-Draft draft-ietf-acme-acme-08, October 2017.</td>
 </tr>
 <tr>
 <td class="reference"><b id="I-D.ietf-tls-tls13">[I-D.ietf-tls-tls13]</b></td>
