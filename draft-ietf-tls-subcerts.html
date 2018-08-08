@@ -276,21 +276,22 @@ address {
 
   <link href="#rfc.toc" rel="Contents">
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Change Log">
 <link href="#rfc.section.2" rel="Chapter" title="2 Solution Overview">
 <link href="#rfc.section.2.1" rel="Chapter" title="2.1 Rationale">
 <link href="#rfc.section.2.2" rel="Chapter" title="2.2 Related Work">
-<link href="#rfc.section.3" rel="Chapter" title="3 Client and Server behavior">
-<link href="#rfc.section.4" rel="Chapter" title="4 Delegated Credentials">
-<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Certificate Requirements">
-<link href="#rfc.section.5" rel="Chapter" title="5 IANA Considerations">
-<link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations">
-<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Security of delegated private key">
-<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Revocation of delegated credentials">
-<link href="#rfc.section.6.3" rel="Chapter" title="6.3 Privacy considerations">
-<link href="#rfc.section.7" rel="Chapter" title="7 Acknowledgements">
-<link href="#rfc.references" rel="Chapter" title="8 References">
-<link href="#rfc.references.1" rel="Chapter" title="8.1 Normative References">
-<link href="#rfc.references.2" rel="Chapter" title="8.2 Informative References">
+<link href="#rfc.section.3" rel="Chapter" title="3 Delegated Credentials">
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Client and Server behavior">
+<link href="#rfc.section.3.2" rel="Chapter" title="3.2 Certificate Requirements">
+<link href="#rfc.section.4" rel="Chapter" title="4 IANA Considerations">
+<link href="#rfc.section.5" rel="Chapter" title="5 Security Considerations">
+<link href="#rfc.section.5.1" rel="Chapter" title="5.1 Security of delegated private key">
+<link href="#rfc.section.5.2" rel="Chapter" title="5.2 Revocation of delegated credentials">
+<link href="#rfc.section.5.3" rel="Chapter" title="5.3 Privacy considerations">
+<link href="#rfc.section.6" rel="Chapter" title="6 Acknowledgements">
+<link href="#rfc.references" rel="Chapter" title="7 References">
+<link href="#rfc.references.1" rel="Chapter" title="7.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="7.2 Informative References">
 <link href="#rfc.authors" rel="Chapter">
 
 
@@ -299,9 +300,9 @@ address {
 
   <meta name="dct.creator" content="Barnes, R., Iyengar, S., Sullivan, N., and E. Rescorla" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-tls-subcerts-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2017-10-30" />
-  <meta name="dct.abstract" content="The organizational separation between the operator of a TLS server and the certificate authority that provides it credentials can cause problems, for example when it comes to reducing the lifetime of certificates or supporting new cryptographic algorithms.  This document describes a mechanism to allow TLS server operators to create their own credential delegations without breaking compatibility with clients that do not support this specification." />
-  <meta name="description" content="The organizational separation between the operator of a TLS server and the certificate authority that provides it credentials can cause problems, for example when it comes to reducing the lifetime of certificates or supporting new cryptographic algorithms.  This document describes a mechanism to allow TLS server operators to create their own credential delegations without breaking compatibility with clients that do not support this specification." />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-8-08" />
+  <meta name="dct.abstract" content="The organizational separation between the operator of a TLS server and the certificate authority can create limitations.  For example, the lifetime of certificates, how they may be used, and the algorithms they support are ultimately determined by the certificate authority.  This document describes a mechanism by which operators may delegate their own credentials for use in TLS, without breaking compatibility with clients that do not support this specification." />
+  <meta name="description" content="The organizational separation between the operator of a TLS server and the certificate authority can create limitations.  For example, the lifetime of certificates, how they may be used, and the algorithms they support are ultimately determined by the certificate authority.  This document describes a mechanism by which operators may delegate their own credentials for use in TLS, without breaking compatibility with clients that do not support this specification." />
 
 </head>
 
@@ -323,7 +324,7 @@ address {
 <td class="right">S. Iyengar</td>
 </tr>
 <tr>
-<td class="left">Expires: May 3, 2018</td>
+<td class="left">Expires: February 9, 2019</td>
 <td class="right">Facebook</td>
 </tr>
 <tr>
@@ -344,7 +345,7 @@ address {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">October 30, 2017</td>
+<td class="right">August 08, 2018</td>
 </tr>
 
     	
@@ -355,14 +356,14 @@ address {
   <span class="filename">draft-ietf-tls-subcerts-latest</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>The organizational separation between the operator of a TLS server and the certificate authority that provides it credentials can cause problems, for example when it comes to reducing the lifetime of certificates or supporting new cryptographic algorithms.  This document describes a mechanism to allow TLS server operators to create their own credential delegations without breaking compatibility with clients that do not support this specification.</p>
+<p>The organizational separation between the operator of a TLS server and the certificate authority can create limitations.  For example, the lifetime of certificates, how they may be used, and the algorithms they support are ultimately determined by the certificate authority.  This document describes a mechanism by which operators may delegate their own credentials for use in TLS, without breaking compatibility with clients that do not support this specification.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on May 3, 2018.</p>
+<p>This Internet-Draft will expire on February 9, 2019.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
-<p>Copyright (c) 2017 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -372,35 +373,37 @@ address {
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a>
 </li>
-<li>2.   <a href="#rfc.section.2">Solution Overview</a>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Change Log</a>
+</li>
+</ul><li>2.   <a href="#rfc.section.2">Solution Overview</a>
 </li>
 <ul><li>2.1.   <a href="#rfc.section.2.1">Rationale</a>
 </li>
 <li>2.2.   <a href="#rfc.section.2.2">Related Work</a>
 </li>
-</ul><li>3.   <a href="#rfc.section.3">Client and Server behavior</a>
+</ul><li>3.   <a href="#rfc.section.3">Delegated Credentials</a>
 </li>
-<li>4.   <a href="#rfc.section.4">Delegated Credentials</a>
+<ul><li>3.1.   <a href="#rfc.section.3.1">Client and Server behavior</a>
 </li>
-<ul><li>4.1.   <a href="#rfc.section.4.1">Certificate Requirements</a>
+<li>3.2.   <a href="#rfc.section.3.2">Certificate Requirements</a>
 </li>
-</ul><li>5.   <a href="#rfc.section.5">IANA Considerations</a>
+</ul><li>4.   <a href="#rfc.section.4">IANA Considerations</a>
 </li>
-<li>6.   <a href="#rfc.section.6">Security Considerations</a>
+<li>5.   <a href="#rfc.section.5">Security Considerations</a>
 </li>
-<ul><li>6.1.   <a href="#rfc.section.6.1">Security of delegated private key</a>
+<ul><li>5.1.   <a href="#rfc.section.5.1">Security of delegated private key</a>
 </li>
-<li>6.2.   <a href="#rfc.section.6.2">Revocation of delegated credentials</a>
+<li>5.2.   <a href="#rfc.section.5.2">Revocation of delegated credentials</a>
 </li>
-<li>6.3.   <a href="#rfc.section.6.3">Privacy considerations</a>
+<li>5.3.   <a href="#rfc.section.5.3">Privacy considerations</a>
 </li>
-</ul><li>7.   <a href="#rfc.section.7">Acknowledgements</a>
+</ul><li>6.   <a href="#rfc.section.6">Acknowledgements</a>
 </li>
-<li>8.   <a href="#rfc.references">References</a>
+<li>7.   <a href="#rfc.references">References</a>
 </li>
-<ul><li>8.1.   <a href="#rfc.references.1">Normative References</a>
+<ul><li>7.1.   <a href="#rfc.references.1">Normative References</a>
 </li>
-<li>8.2.   <a href="#rfc.references.2">Informative References</a>
+<li>7.2.   <a href="#rfc.references.2">Informative References</a>
 </li>
 </ul><li><a href="#rfc.authors">Authors' Addresses</a>
 </li>
@@ -418,43 +421,48 @@ address {
 <li>Whenever the server operator wants to deploy a new certificate, it has to interact with the CA.</li>
 <li>The server operator can only use TLS authentication schemes for which the CA will issue credentials.</li>
 </ul>
-<p id="rfc.section.1.p.3">These dependencies cause problems in practice.  Server operators often want to create short-lived certificates for servers in low-trust zones such as CDNs or remote data centers.  This allows server operators to limit the exposure of keys in cases that they do not realize a compromise has occurred.  The risk inherent in cross-organizational transactions makes it operationally infeasible to rely on an external CA for such short-lived credentials.  In contrast to OCSP stapling, in which an operator could choose to talk to the CA frequently to obtain stapled responses, failure to fetch an OCSP stapled response results only in degraded performance, however failure to fetch a potentially large number of short lived certificates would result in the service not being available which creates greater operational risk.</p>
-<p id="rfc.section.1.p.4">To remove these dependencies, this document proposes a limited delegation mechanism that allows a TLS server operator to issue its own credentials within the scope of a certificate issued by an external CA.  Because the above problems do not relate to the CAs inherent function of validating possession of names, it is safe to make such delegations as long as they only enable the recipient of the delegation to speak for names that the CA has authorized.  For clarity, we will refer to the certificate issued by the CA as a &#8220;certificate&#8221; and the one issued by the operator as a &#8220;Delegated credential&#8221;.</p>
-<h1 id="rfc.section.2">
-<a href="#rfc.section.2">2.</a> <a href="#solution-overview" id="solution-overview">Solution Overview</a>
+<p id="rfc.section.1.p.3">These dependencies cause problems in practice.  Server operators often want to create short-lived certificates for servers in low-trust zones such as CDNs or remote data centers.  This allows server operators to limit the exposure of keys in cases that they do not realize a compromise has occurred.  The risk inherent in cross-organizational transactions makes it operationally infeasible to rely on an external CA for such short-lived credentials.  In OCSP stapling, if an operator chooses to talk frequently to the CA to obtain stapled responses, then failure to fetch an OCSP stapled response results only in degraded performance.  On the other hand, failure to fetch a potentially large number of short lived certificates would result in the service not being available, which creates greater operational risk.</p>
+<p id="rfc.section.1.p.4">To remove these dependencies, this document proposes a limited delegation mechanism that allows a TLS server operator to issue its own credentials within the scope of a certificate issued by an external CA.  Because the above problems do not relate to the CA&#8217;s inherent function of validating possession of names, it is safe to make such delegations as long as they only enable the recipient of the delegation to speak for names that the CA has authorized.  For clarity, we will refer to the certificate issued by the CA as a &#8220;certificate&#8221;, or &#8220;delegation certificate&#8221;, and the one issued by the operator as a &#8220;delegated credential&#8221;.</p>
+<h1 id="rfc.section.1.1">
+<a href="#rfc.section.1.1">1.1.</a> <a href="#change-log" id="change-log">Change Log</a>
 </h1>
-<p id="rfc.section.2.p.1">A Delegated credential is a digitally signed data structure with the following semantic fields:</p>
+<p id="rfc.section.1.1.p.1">(*) indicates changes to the wire protocol.</p>
+<p id="rfc.section.1.1.p.2">draft-02</p>
 <p></p>
 
 <ul>
-<li>A validity interval</li>
-<li>A public key (with its associated algorithm)</li>
+<li>Change DelegationUsage extension to be NULL.</li>
+<li>Drop support for TLS 1.2.</li>
+<li>Add the protocol version and credential signature algorithm to the Credential structure. (*)</li>
+<li>Specify undefined behavior in a few cases: when the client receives a DC without indicated support; when the client indicates the extension in an invalid protocol version; and when DCs are sent as extensions to certificates other than the end-entity certificate.</li>
 </ul>
-<p id="rfc.section.2.p.3">The signature on the credential indicates a delegation from the certificate which is issued to the TLS server operator.  The key pair used to sign a credential is presumed to be one whose public key is contained in an X.509 certificate that associates one or more names to the credential.</p>
-<p id="rfc.section.2.p.4">A TLS handshake that uses credentials differs from a normal handshake in a few important ways:</p>
+<h1 id="rfc.section.2">
+<a href="#rfc.section.2">2.</a> <a href="#solution-overview" id="solution-overview">Solution Overview</a>
+</h1>
+<p id="rfc.section.2.p.1">A delegated credential is a digitally signed data structure with two semantic fields: a validity interval and a public key (along with its associated signature algorithm).  The signature on the credential indicates a delegation from the certificate that is issued to the TLS server operator.  The secret key used to sign a credential corresponds to the public key of the X.509 end-entity certificate.</p>
+<p id="rfc.section.2.p.2">A TLS handshake that uses credentials differs from a normal handshake in a few important ways:</p>
 <p></p>
 
 <ul>
 <li>The client provides an extension in its ClientHello that indicates support for this mechanism.</li>
-<li>The server provides both the certificate chain terminating in its certificate as well as the credential.</li>
-<li>The client uses information in the server&#8217;s certificate to verify the signature on the credential and verify that the server is asserting an expected identity.</li>
+<li>The server provides both the certificate chain terminating in its certificate as well as the delegated credential.</li>
+<li>The client uses information in the server&#8217;s certificate to verify the delegated credential and that the server is asserting an expected identity.</li>
 <li>The client uses the public key in the credential as the server&#8217;s working key for the TLS handshake.</li>
 </ul>
-<p id="rfc.section.2.p.6">Delegated credentials can be used either in TLS 1.3 or TLS 1.2.  Differences between the use of Delegated credentials in the protocols are explicitly stated.</p>
-<p id="rfc.section.2.p.7">It was noted in <a href="#XPROT" class="xref">[XPROT]</a> that certificates in use by servers that support outdated protocols such as SSLv2 can be used to forge signatures for certificates that contain the keyEncipherment KeyUsage (<a href="#RFC5280" class="xref">[RFC5280]</a> section 4.2.1.3) In order to prevent this type of cross-protocol attack, we define a new DelegationUsage extension to X.509 which permits use of delegated credentials.  Clients MUST NOT accept delegated credentials associated with certificates without this extension.</p>
-<p id="rfc.section.2.p.8">Credentials allow the server to terminate TLS connections on behalf of the certificate owner.  If a credential is stolen, there is no mechanism for revoking it without revoking the certificate itself.  To limit the exposure of a delegation credential compromise, servers MUST NOT issue credentials with a validity period longer than 7 days.  Clients MUST NOT accept credentials with longer validity periods.</p>
+<p id="rfc.section.2.p.4">As detailed in <a href="#delegated-credentials" class="xref">Section 3</a>, the delegated credential is cryptographically bound to the end-entity certificate and the protocol in which the credential may be used.  This document specifies the use of delegated credentials in TLS 1.3 or later; their use in prior versions of the protocol is explicitly disallowed.</p>
+<p id="rfc.section.2.p.5">Delegated credentials allow the server to terminate TLS connections on behalf of the certificate owner.  If a credential is stolen, there is no mechanism for revoking it without revoking the certificate itself.  To limit exposure in case a delegated credential is compromised, servers may not issue credentials with a validity period longer than 7 days.  This mechanism is described in detail in <a href="#client-and-server-behavior" class="xref">Section 3.1</a>.</p>
+<p id="rfc.section.2.p.6">It was noted in <a href="#XPROT" class="xref">[XPROT]</a> that certificates in use by servers that support outdated protocols such as SSLv2 can be used to forge signatures for certificates that contain the keyEncipherment KeyUsage (<a href="#RFC5280" class="xref">[RFC5280]</a> section 4.2.1.3)  In order to prevent this type of cross-protocol attack, we define a new DelegationUsage extension to X.509 that permits use of delegated credentials.  (See <a href="#certificate-requirements" class="xref">Section 3.2</a>.)</p>
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#rationale" id="rationale">Rationale</a>
 </h1>
-<p id="rfc.section.2.1.p.1">Delegated credentials present a better alternative from other delegation mechanisms like proxy certificates <a href="#RFC3820" class="xref">[RFC3820]</a> for several reasons:</p>
+<p id="rfc.section.2.1.p.1">Delegated credentials present a better alternative than other delegation mechanisms like proxy certificates <a href="#RFC3820" class="xref">[RFC3820]</a> for several reasons:</p>
 <p></p>
 
 <ul>
 <li>There is no change needed to certificate validation at the PKI layer.</li>
-<li>X.509 semantics are very rich.  This can cause unintended consequences if a service owner creates a proxy cert where the properties differ from the leaf certificate.</li>
-<li>Delegated credentials have very restricted semantics which should not conflict with X.509 semantics.</li>
-<li>Proxy certificates rely on the certificate path building process to establish a binding between the proxy certificate and the server certificate.  Since the cert path building process is not cryptographically protected, it is possible that a proxy certificate could be bound to another certificate with the same public key, with different X.509 parameters.  Delegated credentials, which rely on a cryptographic binding between the entire certificate and the Delegated credential, cannot.</li>
-<li>Delegated credentials allow signed messages to be bound to specific versions of TLS.  This prevents them from being used for other protocols if a service owner allows multiple versions of TLS.</li>
+<li>X.509 semantics are very rich.  This can cause unintended consequences if a service owner creates a proxy certificate where the properties differ from the leaf certificate.  For this reason, delegated credentials have very restricted semantics which should not conflict with X.509 semantics.</li>
+<li>Proxy certificates rely on the certificate path building process to establish a binding between the proxy certificate and the server certificate.  Since the certificate path building process is not cryptographically protected, it is possible that a proxy certificate could be bound to another certificate with the same public key, with different X.509 parameters.  Delegated credentials, which rely on a cryptographic binding between the entire certificate and the delegated credential, cannot.</li>
+<li>Each delegated credential is bound to a specific version of TLS and signature algorithm.  This prevents them from being used for other protocols or with other signature algorithms than service owner allows.</li>
 </ul>
 <h1 id="rfc.section.2.2">
 <a href="#rfc.section.2.2">2.2.</a> <a href="#related-work" id="related-work">Related Work</a>
@@ -475,122 +483,136 @@ Client            Front-End            Back-End
 Delegated credentials:
 
 Client            Front-End            Back-End
-  |                   |&lt;---Cred Provision--|
+  |                   |&lt;----DC minting----&gt;|
   |----ClientHello---&gt;|                    |
   |&lt;---ServerHello----|                    |
   |&lt;---Certificate----|                    |
   |&lt;---CertVerify-----|                    |
+  |        ...        |                    |
 </pre>
-<p id="rfc.section.2.2.p.2">These two classes of mechanism can be complementary.  A server could use credentials for clients that support them, while using LURK to support legacy clients.</p>
+<p id="rfc.section.2.2.p.2">These two mechanisms can be complementary.  A server could use credentials for clients that support them, while using LURK to support legacy clients.</p>
 <p id="rfc.section.2.2.p.3">It is possible to address the short-lived certificate concerns above by automating certificate issuance, e.g., with ACME <a href="#I-D.ietf-acme-acme" class="xref">[I-D.ietf-acme-acme]</a>.  In addition to requiring frequent operationally-critical interactions with an external party, this makes the server operator dependent on the CA&#8217;s willingness to issue certificates with sufficiently short lifetimes.  It also fails to address the issues with algorithm support.  Nonetheless, existing automated issuance APIs like ACME may be useful for provisioning credentials, within an operator network.</p>
 <h1 id="rfc.section.3">
-<a href="#rfc.section.3">3.</a> <a href="#client-and-server-behavior" id="client-and-server-behavior">Client and Server behavior</a>
+<a href="#rfc.section.3">3.</a> <a href="#delegated-credentials" id="delegated-credentials">Delegated Credentials</a>
 </h1>
-<p id="rfc.section.3.p.1">This document defines the following extension code point.</p>
+<p id="rfc.section.3.p.1">While X.509 forbids end-entity certificates from being used as issuers for other certificates, it is perfectly fine to use them to issue other signed objects as long as the certificate contains the digitalSignature KeyUsage (RFC5280 section 4.2.1.3).  We define a new signed object format that would encode only the semantics that are needed for this application.  The credential has the following structure:</p>
 <pre>
-    enum {
-      ...
-      delegated_credential(TBD),
-      (65535)
-    } ExtensionType;
-</pre>
-<p id="rfc.section.3.p.2">A client which supports this document SHALL send an empty &#8220;delegated_credential&#8221; extension in its ClientHello.</p>
-<p id="rfc.section.3.p.3">If the extension is present, the server MAY send a DelegatedCredential extension.  If the extension is not present, the server MUST NOT send a credential.  A credential MUST NOT be provided unless a Certificate message is also sent.</p>
-<p id="rfc.section.3.p.4">When negotiating TLS 1.3, and using Delegated credentials, the server MUST send the DelegatedCredential as an extension in the CertificateEntry of its end entity certificate.  When negotiating TLS 1.2, the DelegatedCredential MUST be sent as an extension in the ServerHello.</p>
-<p id="rfc.section.3.p.5">The DelegatedCredential contains a signature from the public key in the end-entity certificate using a signature algorithm advertised by the client in the &#8220;signature_algorithms&#8221; extension.  Additionally, the credential&#8217;s public key MUST be of a type that enables at least one of the supported signature algorithms.  A Delegated credential MUST NOT be negotiated by the server if its signature is not compatible with any of the supported signature algorithms or the credential&#8217;s public key is not usable with the supported signature algorithms of the client, even if the client advertises support for delegated credentials.</p>
-<p id="rfc.section.3.p.6">On receiving a credential and a certificate chain, the client validates the certificate chain and matches the end-entity certificate to the server&#8217;s expected identity following its normal procedures.  It then takes the following additional steps:</p>
-<p></p>
-
-<ul>
-<li>Verify that the current time is within the validity interval of the credential.</li>
-<li>Use the public key in the server&#8217;s end-entity certificate to verify the signature on the credential.</li>
-<li>Use the public key in the credential to verify a signature provided in the handshake. That is the CertificateVerify message in TLS 1.3 or ServerKeyExchange in 1.2.</li>
-<li>Verify that the certificate has the correct extensions that allow the use of Delegated credentials.</li>
-</ul>
-<p id="rfc.section.3.p.8">Clients that receive Delegated credentials that are valid for more than 7 days MUST terminate the connection with an &#8220;illegal_parameter&#8221; alert.</p>
-<h1 id="rfc.section.4">
-<a href="#rfc.section.4">4.</a> <a href="#delegated-credentials" id="delegated-credentials">Delegated Credentials</a>
-</h1>
-<p id="rfc.section.4.p.1">While X.509 forbids end-entity certificates from being used as issuers for other certificates, it is perfectly fine to use them to issue other signed objects as long as the certificate contains the digitalSignature key usage (RFC5280 section 4.2.1.3).  We define a new signed object format that would encode only the semantics that are needed for this application.</p>
-<pre>
-struct {
-  uint32 validTime;
-  opaque publicKey&lt;0..2^16-1&gt;;
-} DelegatedCredentialParams;
-
-struct {
-  DelegatedCredentialParams cred;
-  SignatureScheme scheme;
-  opaque signature&lt;0..2^16-1&gt;;
-} DelegatedCredential;
+   struct {
+     uint32 valid_time;
+     SignatureScheme expected_cert_verify_algorithm;
+     ProtocolVersion expected_version;
+     opaque public_key&lt;0..2^16-1&gt;;
+   } Credential;
 </pre>
 <p></p>
 
 <dl>
-<dt>validTime:</dt>
-<dd style="margin-left: 8">Relative time in seconds from the beginning of the certificate&#8217;s notBefore value after which the Delegated Credential is no longer valid.</dd>
-<dt>publicKey:</dt>
-<dd style="margin-left: 8">The Delegated Credential&#8217;s public key which is an encoded SubjectPublicKeyInfo <a href="#RFC5280" class="xref">[RFC5280]</a>.</dd>
-<dt>scheme:</dt>
-<dd style="margin-left: 8">The Signature algorithm and scheme used to sign the Delegated credential.</dd>
+<dt>valid_time:</dt>
+<dd style="margin-left: 8">Relative time in seconds from the beginning of the delegation certificate&#8217;s notBefore value after which the delegated credential is no longer valid.</dd>
+<dt>expected_cert_verify_algorithm:</dt>
+<dd style="margin-left: 8">The signature algorithm of the credential key pair, where the type SignatureScheme is as defined in the TLS 1.3 standard. This is expected to be the same as CertificateVerify.algorithm sent by the server.</dd>
+<dt>expected_version:</dt>
+<dd style="margin-left: 8">The version of TLS in which the credential will be used, where the type ProtocolVersion is as defined in TLS 1.3. This is expected to match the protocol version that is negotiated by the client and server.</dd>
+<dt>public_key:</dt>
+<dd style="margin-left: 8">The credential&#8217;s public key, a DER-encoded SubjectPublicKeyInfo as defined in <a href="#RFC5280" class="xref">[RFC5280]</a>.</dd>
+</dl>
+<p id="rfc.section.3.p.3">The delegated credential has the following structure:</p>
+<pre>
+   struct {
+     Credential cred;
+     SignatureScheme algorithm;
+     opaque signature&lt;0..2^16-1&gt;;
+   } DelegatedCredential;
+</pre>
+<p></p>
+
+<dl>
+<dt>algorithm:</dt>
+<dd style="margin-left: 8">The signature algorithm used to verify DelegatedCredential.signature.</dd>
 <dt>signature:</dt>
 <dd style="margin-left: 8">The signature over the credential with the end-entity certificate&#8217;s public key, using the scheme.</dd>
 </dl>
-<p id="rfc.section.4.p.3">The DelegatedCredential structure is similar to the CertificateVerify structure in TLS 1.3.  Since the SignatureScheme defined in TLS 1.3, TLS 1.2 clients should translate the scheme into an appropriate group and signature algorithm to perform validation.</p>
-<p id="rfc.section.4.p.4">The signature of the DelegatedCredential is computed over the concatenation of:</p>
+<p id="rfc.section.3.p.5">The signature of the DelegatedCredential is computed over the concatenation of:</p>
 <p></p>
 
 <ol>
 <li>A string that consists of octet 32 (0x20) repeated 64 times.</li>
 <li>The context string &#8220;TLS, server delegated credentials&#8221;.</li>
-<li>A single 0 byte which serves as the separator</li>
-<li>Big endian serialized 2 bytes ProtocolVersion of the negotiated TLS version, defined by TLS.</li>
-<li>DER encoded X.509 certificate used to sign the DelegatedCredential.</li>
-<li>Big endian serialized 2 byte SignatureScheme scheme.</li>
-<li>The DelegatedCredentialParams structure.</li>
+<li>A single 0 byte, which serves as the separator.</li>
+<li>The DER-encoded X.509 end-entity certificate used to sign the DelegatedCredential.</li>
+<li>DelegatedCredential.algorithm.</li>
+<li>DelegatedCredential.scheme.</li>
 </ol>
-<p id="rfc.section.4.p.6">This signature has a few desirable properties:</p>
+<p id="rfc.section.3.p.7">The signature effectively binds the credential to the parameters of the handshake in which it is used.  In particular, it ensures that credentials are only used with the certificate, protocol, and signature algorithm chosen by the delegator.  Minimizing their semantics in this way is intended to mitigate the risk of cross protocol attacks involving delegated credentials.</p>
+<p id="rfc.section.3.p.8">The code changes to create and verify delegated credentials would be localized to the TLS stack, which has the advantage of avoiding changes to security-critical and often delicate PKI code (though of course moves that complexity to the TLS stack).</p>
+<h1 id="rfc.section.3.1">
+<a href="#rfc.section.3.1">3.1.</a> <a href="#client-and-server-behavior" id="client-and-server-behavior">Client and Server behavior</a>
+</h1>
+<p id="rfc.section.3.1.p.1">This document defines the following extension code point.</p>
+<pre>
+   enum {
+     ...
+     delegated_credential(TBD),
+     (65535)
+   } ExtensionType;
+</pre>
+<p id="rfc.section.3.1.p.2">A client which supports this specification SHALL send an empty &#8220;delegated_credential&#8221; extension in its ClientHello.  If the client receives a delegated credential without indicating support, then the client MUST abort with an &#8220;unexpected_message&#8221; alert.</p>
+<p id="rfc.section.3.1.p.3">If the extension is present, the server MAY send a delegated credential; if the extension is not present, the server MUST NOT send a delegated credential.  A delegated credential MUST NOT be provided unless a Certificate message is also sent.  The server MUST ignore the extension unless TLS 1.3 or a later version is negotiated.</p>
+<p id="rfc.section.3.1.p.4">The server MUST send the delegated credential as an extension in the CertificateEntry of its end-entity certificate; the client SHOULD ignore delegated credentials sent as extensions to any other certificate.</p>
+<p id="rfc.section.3.1.p.5">The algorithm and expected_cert_verify_algorithm fields MUST be of a type advertised by the client in the &#8220;signature_algorithms&#8221; extension.  A delegated credential MUST NOT be negotiated otherwise, even if the client advertises support for delegated credentials.</p>
+<p id="rfc.section.3.1.p.6">On receiving a delegated credential and a certificate chain, the client validates the certificate chain and matches the end-entity certificate to the server&#8217;s expected identity following its normal procedures.  It also takes the following steps:</p>
+<p></p>
+
+<ol>
+<li>Verify that the current time is within the validity interval of the credential and that the credential&#8217;s time to live is no more than 7 days.</li>
+<li>Verify that expected_cert_verify_algorithm matches the scheme indicated in the server&#8217;s CertificateVerify message.</li>
+<li>Verify that expected_version matches the protocol version indicated in the server&#8217;s &#8220;supported_versions&#8221; extension.</li>
+<li>Verify that the end-entity certificate satisfies the conditions specified in <a href="#certificate-requirements" class="xref">Section 3.2</a>.</li>
+<li>Use the public key in the server&#8217;s end-entity certificate to verify the signature of the credential using the algorithm indicated by DelegatedCredential.algorithm.</li>
+</ol>
+<p id="rfc.section.3.1.p.8">If one or more of these checks fail, then the delegated credential is deemed invalid.  Clients that receive invalid delegated credentials MUST terminate the connection with an &#8220;illegal_parameter&#8221; alert.  If successful, the client uses the public key in the credential to verify the signature in the server&#8217;s CertificateVerify message.</p>
+<h1 id="rfc.section.3.2">
+<a href="#rfc.section.3.2">3.2.</a> <a href="#certificate-requirements" id="certificate-requirements">Certificate Requirements</a>
+</h1>
+<p id="rfc.section.3.2.p.1">We define a new X.509 extension, DelegationUsage, to be used in the certificate when the certificate permits the usage of delegated credentials.</p>
+<pre>
+   id-ce-delegationUsage OBJECT IDENTIFIER ::=  { TBD }
+   DelegationUsage ::= NULL
+</pre>
+<p id="rfc.section.3.2.p.2">The extension MUST be marked non-critical.  (See Section 4.2 of <a href="#RFC5280" class="xref">[RFC5280]</a>.) The client MUST NOT accept a delegated credential unless the server&#8217;s end-entity certificate satisfies the following criteria:</p>
 <p></p>
 
 <ul>
-<li>It is bound to the certificate that signed it.</li>
-<li>It is bound to the protocol version that is negotiated.  This is intended to avoid cross-protocol attacks with signing oracles.</li>
+<li>It has the DelegationUsage extension.</li>
+<li>It has the digitalSignature KeyUsage (see the KeyUsage extension defined in <a href="#RFC5280" class="xref">[RFC5280]</a>).</li>
 </ul>
-<p id="rfc.section.4.p.8">The code changes to create and verify Delegated credentials would be localized to the TLS stack, which has the advantage of avoiding changes to security-critical and often delicate PKI code (though of course moves that complexity to the TLS stack).</p>
-<h1 id="rfc.section.4.1">
-<a href="#rfc.section.4.1">4.1.</a> <a href="#certificate-requirements" id="certificate-requirements">Certificate Requirements</a>
+<h1 id="rfc.section.4">
+<a href="#rfc.section.4">4.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
-<p id="rfc.section.4.1.p.1">We define a new X.509 extension, DelegationUsage to be used in the certificate when the certificate permits the usage of Delegated Credentials.  When this extension is not present the client MUST not accept a Delegated Credential even if it is negotiated by the server.  When it is present, the client MUST follow the validation procedure.</p>
-<p id="rfc.section.4.1.p.2">id-ce-delegationUsage OBJECT IDENTIFIER ::=  { TBD }</p>
-<p id="rfc.section.4.1.p.3">DelegationUsage ::= BIT STRING { allowed (0) }</p>
-<p id="rfc.section.4.1.p.4">Conforming CAs MUST mark this extension as non-critical.  This would allow the certificate to be used by service owners for clients that do not support certificate delegation as well and not need to obtain two certificates.</p>
+<p id="rfc.section.4.p.1">TBD</p>
 <h1 id="rfc.section.5">
-<a href="#rfc.section.5">5.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
+<a href="#rfc.section.5">5.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
-<p id="rfc.section.5.p.1">TBD</p>
+<h1 id="rfc.section.5.1">
+<a href="#rfc.section.5.1">5.1.</a> <a href="#security-of-delegated-private-key" id="security-of-delegated-private-key">Security of delegated private key</a>
+</h1>
+<p id="rfc.section.5.1.p.1">Delegated credentials limit the exposure of the TLS private key by limiting its validity.  An attacker who compromises the private key of a delegated credential can act as a man in the middle until the delegate credential expires, however they cannot create new delegated credentials.  Thus delegated credentials should not be used to send a delegation to an untrusted party, but is meant to be used between parties that have some trust relationship with each other.  The secrecy of the delegated private key is thus important and several access control mechanisms SHOULD be used to protect it such as file system controls, physical security or hardware security modules.</p>
+<h1 id="rfc.section.5.2">
+<a href="#rfc.section.5.2">5.2.</a> <a href="#revocation-of-delegated-credentials" id="revocation-of-delegated-credentials">Revocation of delegated credentials</a>
+</h1>
+<p id="rfc.section.5.2.p.1">Delegated credentials do not provide any additional form of early revocation.  Since it is short lived, the expiry of the delegated credential would revoke the credential.  Revocation of the long term private key that signs the delegated credential also implicitly revokes the delegated credential.</p>
+<h1 id="rfc.section.5.3">
+<a href="#rfc.section.5.3">5.3.</a> <a href="#privacy-considerations" id="privacy-considerations">Privacy considerations</a>
+</h1>
+<p id="rfc.section.5.3.p.1">Delegated credentials can be valid for 7 days and it is much easier for a service to create delegated credential than a certificate signed by a CA.  A service could determine the client time and clock skew by creating several delegated credentials with different expiry timestamps and observing whether the client would accept it.  Client time could be unique and thus privacy sensitive clients, such as browsers in incognito mode, who do not trust the service might not want to advertise support for delegated credentials or limit the number of probes that a server can perform.</p>
 <h1 id="rfc.section.6">
-<a href="#rfc.section.6">6.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
+<a href="#rfc.section.6">6.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
 </h1>
-<h1 id="rfc.section.6.1">
-<a href="#rfc.section.6.1">6.1.</a> <a href="#security-of-delegated-private-key" id="security-of-delegated-private-key">Security of delegated private key</a>
-</h1>
-<p id="rfc.section.6.1.p.1">Delegated credentials limit the exposure of the TLS private key by limiting its validity.  An attacker who compromises the private key of a delegated credential can act as a man in the middle until the delegate credential expires, however they cannot create new delegated credentials. Thus delegated credentials should not be used to send a delegation to an untrusted party, but is meant to be used between parties that have some trust relationship with each other.  The secrecy of the delegated private key is thus important and several access control mechanisms SHOULD be used to protect it such as file system controls, physical security or hardware security modules.</p>
-<h1 id="rfc.section.6.2">
-<a href="#rfc.section.6.2">6.2.</a> <a href="#revocation-of-delegated-credentials" id="revocation-of-delegated-credentials">Revocation of delegated credentials</a>
-</h1>
-<p id="rfc.section.6.2.p.1">Delegated credentials do not provide any additional form of early revocation.  Since it is short lived, the expiry of the delegated credential would revoke the credential.  Revocation of the long term private key that signs the delegated credential also implictly revokes the delegated credential.</p>
-<h1 id="rfc.section.6.3">
-<a href="#rfc.section.6.3">6.3.</a> <a href="#privacy-considerations" id="privacy-considerations">Privacy considerations</a>
-</h1>
-<p id="rfc.section.6.3.p.1">Delegated credentials can be valid for 7 days and it is much easier for a service to create delegated credential than a certificate signed by a CA. A service could determine the client time and clock skew by creating several delegated credentials with different expiry timestamps and observing whether the client would accept it.  Client time could be unique and thus privacy sensitive clients, such as browsers in incognito mode, who do not trust the service might not want to advertise support for delegated credentials or limit the number of probes that a server can perform.</p>
-<h1 id="rfc.section.7">
-<a href="#rfc.section.7">7.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
-</h1>
-<p id="rfc.section.7.p.1">Thanks to Kyle Nekritz, Anirudh Ramachandran, Benjamin Kaduk, Kazuho Oku, Daniel Kahn Gillmor for their discussions, ideas, and bugs they&#8217;ve found.</p>
+<p id="rfc.section.6.p.1">Thanks to Christopher Patton, Kyle Nekritz, Anirudh Ramachandran, Benjamin Kaduk, Kazuho Oku, Daniel Kahn Gillmor for their discussions, ideas, and bugs they&#8217;ve found.</p>
 <h1 id="rfc.references">
-<a href="#rfc.references">8.</a> References</h1>
+<a href="#rfc.references">7.</a> References</h1>
 <h1 id="rfc.references.1">
-<a href="#rfc.references.1">8.1.</a> Normative References</h1>
+<a href="#rfc.references.1">7.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="RFC5246">[RFC5246]</b></td>
@@ -604,17 +626,17 @@ struct {
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
-<a href="#rfc.references.2">8.2.</a> Informative References</h1>
+<a href="#rfc.references.2">7.2.</a> Informative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="I-D.ietf-acme-acme">[I-D.ietf-acme-acme]</b></td>
 <td class="top">
-<a>Barnes, R.</a>, <a>Hoffman-Andrews, J.</a> and <a>J. Kasten</a>, "<a href="https://tools.ietf.org/html/draft-ietf-acme-acme-08">Automatic Certificate Management Environment (ACME)</a>", Internet-Draft draft-ietf-acme-acme-08, October 2017.</td>
+<a>Barnes, R.</a>, <a>Hoffman-Andrews, J.</a>, <a>McCarney, D.</a> and <a>J. Kasten</a>, "<a href="https://tools.ietf.org/html/draft-ietf-acme-acme-13">Automatic Certificate Management Environment (ACME)</a>", Internet-Draft draft-ietf-acme-acme-13, July 2018.</td>
 </tr>
 <tr>
 <td class="reference"><b id="I-D.ietf-tls-tls13">[I-D.ietf-tls-tls13]</b></td>
 <td class="top">
-<a>Rescorla, E.</a>, "<a href="https://tools.ietf.org/html/draft-ietf-tls-tls13-21">The Transport Layer Security (TLS) Protocol Version 1.3</a>", Internet-Draft draft-ietf-tls-tls13-21, July 2017.</td>
+<a>Rescorla, E.</a>, "<a href="https://tools.ietf.org/html/draft-ietf-tls-tls13-28">The Transport Layer Security (TLS) Protocol Version 1.3</a>", Internet-Draft draft-ietf-tls-tls13-28, March 2018.</td>
 </tr>
 <tr>
 <td class="reference"><b id="I-D.mglt-lurk-tls-requirements">[I-D.mglt-lurk-tls-requirements]</b></td>
